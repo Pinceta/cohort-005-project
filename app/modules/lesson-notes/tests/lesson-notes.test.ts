@@ -47,4 +47,19 @@ describe("noteDraftStatus", () => {
       counter: "2,001 / 2,000",
     });
   });
+
+  it("is clean once the server has saved the trimmed draft", () => {
+    const status = noteDraftStatus("Generics recap\n", "Generics recap");
+    expect(status.dirty).toBe(false);
+    expect(status.canSave).toBe(false);
+  });
+
+  it("measures the length the server will save, without edge whitespace", () => {
+    const status = noteDraftStatus(` ${"a".repeat(MAX_NOTE_LENGTH)}\n`, "");
+    expect(status).toMatchObject({
+      tooLong: false,
+      canSave: true,
+      counter: "2,000 / 2,000",
+    });
+  });
 });
