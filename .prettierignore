@@ -4,3 +4,7 @@ drizzle/
 # Skills are installed from upstream (see skills-lock.json)
 .agents/
 .claude/skills/
+
+# A symlink to AGENTS.md. Without symlink support (core.symlinks=false on
+# Windows), Git writes it as a one-line text file, which fails the check.
+CLAUDE.md

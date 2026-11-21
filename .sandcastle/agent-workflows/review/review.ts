@@ -12,7 +12,7 @@ import { reviewSchema } from "./review-schema";
 const BASE_REF = required("BASE_REF");
 
 // The agent fixes and commits, writes the verdict file, and hands back the
-// findings it left. The workflow pushes the commits, posts the verdict and
+// Defects it left. The workflow pushes the commits, posts the verdict and
 // the inline comments, and marks the PR ready.
 const result = await runWithExtraction({
   name: "review",
@@ -45,6 +45,6 @@ const comments = found.filter(({ path: file, line }) => {
 writeJson("review-comments.json", {
   commit_id: git("rev-parse", "HEAD").trim(),
   event: "COMMENT",
-  body: "The findings this review left for you, on their lines. The verdict is in its own comment.",
+  body: "The Defects this review left for you, on their lines. The Verdict, with the Decisions and the Pre-existing Findings, is in its own comment.",
   comments: comments.map((comment) => ({ ...comment, side: "RIGHT" })),
 });

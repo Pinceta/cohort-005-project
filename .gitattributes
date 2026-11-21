@@ -1,2 +1,4 @@
-*.sh text eol=lf
-.husky/* text eol=lf
+# LF in every checkout, whatever core.autocrlf says. Biome and Prettier check
+# the files on disk, so a CRLF checkout on Windows fails the pre-commit hook
+# on files nobody changed. Git still leaves binary files alone.
+* text=auto eol=lf

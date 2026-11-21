@@ -121,6 +121,8 @@
       }
     },
     // Files already over a size limit. Remove each entry once the file is split.
+    // These lists only get shorter: scripts/check-lint-exemptions.ts fails a
+    // commit that adds an entry.
     {
       "files": [
         "app/lib/comments.server.test.ts",
