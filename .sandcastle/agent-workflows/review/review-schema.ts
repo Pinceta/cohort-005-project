@@ -1,7 +1,8 @@
 import { z } from "zod/v4";
 
-// The findings the review left unfixed. The workflow posts each one as an
-// inline comment on the pull request, on its file and line.
+// The Defects the review left unfixed. The workflow posts each one as an
+// inline comment on the pull request, on its file and line. Pre-existing
+// Findings and Decisions go in the Verdict only.
 export const reviewSchema = z
   .strictObject({
     comments: z
@@ -22,10 +23,12 @@ export const reviewSchema = z
             .string()
             .min(1)
             .describe(
-              "The finding, in Markdown: the rule or spec line it breaks, and what to do instead."
+              "The Defect, in Markdown: the rule or spec line it breaks, and what to do instead."
             ),
         })
       )
-      .describe("One entry per finding you left unfixed. Empty is fine."),
+      .describe(
+        "One entry per Defect you left unfixed. Not Pre-existing Findings or Decisions. Empty is fine."
+      ),
   })
   .describe("The review's inline comments.");

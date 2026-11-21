@@ -17,6 +17,8 @@ run() {
 run lint-staged npx lint-staged --no-stash --no-hide-partially-staged
 run typecheck npm run --silent typecheck
 run boundaries npm run --silent lint:boundaries
+# Not through npx: its lookup costs a second of the budget.
+run exemptions node_modules/.bin/tsx scripts/check-lint-exemptions.ts
 wait
 
 status=0
