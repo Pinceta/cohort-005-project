@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!drizzle", "!.agents", "!.claude/skills"]
+    "includes": ["**", "!drizzle", "!.agents", "!.claude/skills", "!CLAUDE.md"]
   },
   "formatter": {
     "indentStyle": "space",
